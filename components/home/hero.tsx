@@ -118,7 +118,7 @@ export default function Hero() {
             className="hidden lg:block relative"
           >
             <div className="relative">
-              <div className="relative z-10 bg-white p-4 rounded-2xl">
+              <div className="relative z-10">
                 <img
                   src="/Bharat.png" 
                   alt="India Map - Civic Connect" 
