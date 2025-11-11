@@ -117,27 +117,23 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
           >
-            <div className="relative">
-              <div className="relative z-10">
-                <img
-                  src="/Bharat.png" 
-                  alt="India Map - Civic Connect" 
-                  className="relative w-full h-auto"
-                  style={{ transform: 'scale(1.75)' }}
-                />
+            <img
+              src="/Bharat.png" 
+              alt="India Map - Civic Connect" 
+              className="w-full h-auto"
+              style={{ transform: 'scale(2)' }}
+            />
+            
+            {/* Static badges */}
+            <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border-2 border-gray-200 z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="text-sm font-bold text-gray-700">Live</span>
               </div>
-              
-              {/* Static badges */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border-2 border-gray-200">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-bold text-gray-700">Live</span>
-                </div>
-              </div>
-              
-              <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl p-3 shadow-lg">
-                <div className="text-xs font-bold">50K+ Users</div>
-              </div>
+            </div>
+            
+            <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl p-3 shadow-lg z-10">
+              <div className="text-xs font-bold">50K+ Users</div>
             </div>
           </motion.div>
         </div>
