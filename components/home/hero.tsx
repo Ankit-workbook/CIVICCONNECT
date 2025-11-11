@@ -117,62 +117,26 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
           >
-            {/* Animated rings around image */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-4 border-gray-200 opacity-20"
-              style={{ transform: 'scale(1.1)' }}
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-4 border-gray-300 opacity-20"
-              style={{ transform: 'scale(1.05)' }}
-            />
-            
             <div className="relative">
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 2, 0, -2, 0]
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="relative z-10"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-300 via-gray-400 to-gray-500 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  src="/images (2).png" 
-                  alt="Civic Connect Illustration" 
-                  className="relative w-full h-auto rounded-2xl shadow-2xl hover:shadow-gray-500/50 transition-all duration-500"
+              <div className="relative z-10 bg-white p-4 rounded-2xl">
+                <img
+                  src="/Bharat.png" 
+                  alt="India Map - Civic Connect" 
+                  className="relative w-full h-auto"
                 />
-              </motion.div>
+              </div>
               
-              {/* Floating badges */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-xl border-2 border-gray-200"
-              >
+              {/* Static badges */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border-2 border-gray-200">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <span className="text-sm font-bold text-gray-700">Live</span>
                 </div>
-              </motion.div>
+              </div>
               
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl p-3 shadow-xl"
-              >
+              <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl p-3 shadow-lg">
                 <div className="text-xs font-bold">50K+ Users</div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
