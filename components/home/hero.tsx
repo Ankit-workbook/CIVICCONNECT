@@ -123,6 +123,7 @@ export default function Hero() {
                   src="/Bharat.png" 
                   alt="India Map - Civic Connect" 
                   className="relative w-full h-auto"
+                  style={{ transform: 'scale(1.75)' }}
                 />
               </div>
               
