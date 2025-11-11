@@ -1,0 +1,59 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return isAuthenticated() && 
+             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Helper function to validate image files
+    function isValidImage() {
+      return request.resource.size < 5 * 1024 * 1024 && // Max 5MB
+             request.resource.contentType.matches('image/.*');
+    }
+    
+    // Report images
+    match /reports/{reportId}/{imageFileName} {
+      // Anyone can read images
+      allow read: if true;
+      
+      // Authenticated users can upload images
+      allow create: if isAuthenticated() && isValidImage();
+      
+      // Only admins or the uploader can delete
+      allow delete: if isAdmin() || 
+                       (isAuthenticated() && 
+                        resource.metadata.uploadedBy == request.auth.uid);
+      
+      // No updates allowed (delete and re-upload instead)
+      allow update: if false;
+    }
+    
+    // User profile pictures
+    match /users/{userId}/profile/{fileName} {
+      // Anyone can read profile pictures
+      allow read: if true;
+      
+      // Users can upload their own profile picture
+      allow create, update: if isAuthenticated() && 
+                               request.auth.uid == userId && 
+                               isValidImage();
+      
+      // Users can delete their own profile picture
+      allow delete: if isAuthenticated() && 
+                       request.auth.uid == userId;
+    }
+    
+    // Admin uploads
+    match /admin/{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
